@@ -11,6 +11,7 @@ require('dotenv').config();
 // Import routes
 const indexRouter = require('./backend/routes/index');
 const usersRouter = require('./backend/routes/users');
+const apiRouter = require('./backend/routes/api');
 
 const app = express();
 
@@ -85,14 +86,7 @@ app.get('/health', (req, res) => {
 // Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-// Future API routes placeholder
-app.use('/api', (req, res) => {
-  res.status(501).json({ 
-    error: 'API endpoints not yet implemented',
-    message: 'Letta AI integration and agent management endpoints coming soon'
-  });
-});
+app.use('/api', apiRouter);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
