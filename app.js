@@ -9,8 +9,8 @@ const winston = require('winston');
 require('dotenv').config();
 
 // Import routes
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./backend/routes/index');
+const usersRouter = require('./backend/routes/users');
 
 const app = express();
 
@@ -59,7 +59,7 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // View engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'backend/views'));
 app.set('view engine', 'pug');
 
 // Middleware setup
